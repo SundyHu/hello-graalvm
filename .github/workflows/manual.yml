@@ -37,11 +37,13 @@ jobs:
           java-package: 'jdk'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           cache: maven
-
+      - name: Fix Maven Wrapper permissions
+        run: chmod +x mvnw
+        if: runner.os != 'Windows'
       - name: Build
         shell: bash
         run: |
-          mvn -Pnative package
+          ./mvnw -Pnative package
 
       - name: Archive Release
         uses: thedoctor0/zip-release@0.7.5
