@@ -15,8 +15,10 @@ jobs:
         include:
           - os: 'ubuntu-latest'
             platform: 'linux-amd64'
+            executable-suffix: ''
           - os: 'windows-latest'
             platform: 'win-amd64'
+            executable-suffix: '.exe'
     runs-on: ${{matrix.os}}
     permissions:
       contents: write
@@ -48,8 +50,5 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-artifacts ${{ matrix.version }} on ${{ matrix.os }}
-          path: |
-            target/spring-native-demo.jar
-            target/spring-native-demo-binary
-            target/spring-native-demo*
+          name: ${{ steps.executable.outputs.name }}
+          path: target/${{ steps.executable.outputs.name }}${{ matrix.executable-suffix }}
