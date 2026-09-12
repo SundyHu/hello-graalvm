@@ -9,7 +9,6 @@ on:
 jobs:
   build-dev:
     name: 'Build Native Image ${{ matrix.platform }}'
-    needs: [ test_linux_headless ]
     strategy:
       matrix:
         os: [ macos-latest, windows-latest, ubuntu-latest ]
