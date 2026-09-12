@@ -45,19 +45,11 @@ jobs:
         run: |
           ./mvnw -Pnative package
 
-      - name: Archive Release
-        uses: thedoctor0/zip-release@0.7.5
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
         with:
-          type: 'zip'
-          filename: "raffle-${{ matrix.platform }}.zip"
-          directory: target/native
-
-      - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref }}
-          release_name: native-image
-          file: "target/native/raffle-${{ matrix. platform }}.zip"
-          overwrite: true
-          make_latest: true
+          name: build-artifacts ${{ matrix.version }} on ${{ matrix.os }}
+          path: |
+            target/spring-native-demo.jar
+            target/spring-native-demo-binary
+            target/spring-native-demo*
