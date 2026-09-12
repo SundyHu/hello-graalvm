@@ -1,16 +1,13 @@
 name: Native Image
 
 on:
-  workflow_dispatch:
   push:
-    paths-ignore:
-      - 'docs/**'
-      - '**/*.md'
-    branches:
-      - master
+    branches: [ "master", "main" ]
+  pull_request:
+    branches: [ "master", "main" ]
 
 jobs:
-  demo-build:
+  build-dev:
     name: 'Build Native Image ${{ matrix.platform }}'
     needs: [ test_linux_headless ]
     strategy:
