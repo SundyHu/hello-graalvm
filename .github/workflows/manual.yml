@@ -45,7 +45,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          ./mvnw -Pnative package
+          mvn -Pnative package
       - id: executable
         run: echo "::set-output name=name::flickr2-${{ runner.os }}-${{ github.event.release.tag_name || 'snapshot' }}-x86_64"
       - name: Upload build artifacts
