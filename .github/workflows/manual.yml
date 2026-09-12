@@ -47,3 +47,10 @@ jobs:
         run: |
           mvn -Pnative package
           ls target
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts ${{ matrix.version }} on ${{ matrix.os }}
+          path: |
+            target/hello-graalvm
+            target/*.exe
