@@ -10,6 +10,8 @@
 	</parent>
 	<groupId>com.iros</groupId>
 	<artifactId>hello-graalvm</artifactId>
+
+	
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
 	<description/>
@@ -47,7 +49,23 @@
 			<plugin>
 				<groupId>org.graalvm.buildtools</groupId>
 				<artifactId>native-maven-plugin</artifactId>
-			</plugin>
+				<extensions>true</extensions>
+                <configuration>
+                    <buildArgs>
+                        <buildArg>-march=compatibility</buildArg>
+                    </buildArgs>
+                </configuration>     
+                <executions>
+                    <execution>
+                        <id>build-image</id>
+                        <goals>
+                            <goal>compile-no-fork</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
