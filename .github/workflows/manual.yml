@@ -10,7 +10,7 @@ on:
       - master
 
 jobs:
-  build_non_win_images:
+  demo-build:
     name: 'Build Native Image ${{ matrix.platform }}'
     needs: [ test_linux_headless ]
     strategy:
