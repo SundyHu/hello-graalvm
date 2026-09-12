@@ -46,13 +46,4 @@ jobs:
         shell: bash
         run: |
           mvn -Pnative package
-      - id: executable
-        run: echo "::set-output name=name::flickr2-${{ runner.os }}-${{ github.event.release.tag_name || 'snapshot' }}-x86_64"
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-artifacts ${{ matrix.version }} on ${{ matrix.os }}
-          path: |
-            target/hello-graalvm.jar
-            target/hello-graalvm-binary
-            target/*.exe
+          ls target
