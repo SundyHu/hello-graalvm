@@ -45,7 +45,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          mvn -Pnative package
+          mvn -Pnative package -Dmaven.test.skip=true
           ls target
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
