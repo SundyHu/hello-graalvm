@@ -10,7 +10,6 @@
 	</parent>
 	<groupId>com.iros</groupId>
 	<artifactId>hello-graalvm</artifactId>
-
 	
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
@@ -48,6 +47,11 @@
                 <configuration>
                     <buildArgs>
                         <buildArg>-march=compatibility</buildArg>
+						<buildArg>--initialize-at-run-time=ch.qos.logback</buildArg>
+						<buildArg>-H:ReflectionConfigurationFiles=src/main/resources/META-INF/reflection-config.json</buildArg>
+						<buildArg>-H:IncludeResources=logback.xml</buildArg>
+						<buildArg>-H:+UnlockExperimentalVMOptions</buildArg>
+						<buildArg>-H:Log=registerResource:5</buildArg>
                     </buildArgs>
                 </configuration>     
                 <executions>
