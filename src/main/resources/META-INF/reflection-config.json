@@ -1,0 +1,38 @@
+[
+  // 保留原有转换器配置
+  {
+    "name": "ch.qos.logback.classic.pattern.DateConverter",
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "ch.qos.logback.classic.pattern.MessageConverter",
+    "allDeclaredConstructors": true
+  },
+  // ... 其他原有转换器配置 ...
+  
+  // 新增核心类配置
+  {
+    "name": "ch.qos.logback.classic.joran.JoranConfigurator",
+    "allDeclaredConstructors": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "ch.qos.logback.core.ConsoleAppender",
+    "allDeclaredConstructors": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true
+  },
+  {
+    "name": "ch.qos.logback.classic.PatternLayout",
+    "allDeclaredConstructors": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "ch.qos.logback.core.joran.spi.ElementSelector",
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "ch.qos.logback.core.joran.spi.RuleStore",
+    "allDeclaredConstructors": true
+  }
+]
